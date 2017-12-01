@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="快来添加你的第一篇日记吧~"
+        android:textSize="18sp"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_diary"
         android:layout_width="match_parent"

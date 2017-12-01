@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.demo.diary.adapter.DiaryAdapter;
 import com.demo.diary.bean.Diary;
@@ -23,11 +24,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mDiaryRv;
+    private DiaryAdapter mAdapter;
+
     private AddDiaryDialog mAddDiaryDialog;
     private EditDiaryDialog mEditDiaryDialog;
-    private DiaryAdapter mAdapter;
+
+    private RecyclerView mDiaryRv;
     private RelativeLayout mMainRt;
+    private TextView mHintTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +39,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mMainRt = (RelativeLayout) findViewById(R.id.rt_main);
+
         mDiaryRv = (RecyclerView) findViewById(R.id.rv_diary);
         FloatingActionButton writeFab = (FloatingActionButton) findViewById(R.id.fab_write);
+        mHintTv = (TextView) findViewById(R.id.tv_hint);
 
         writeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAddDiaryDialog = new AddDiaryDialog(MainActivity.this, mAdapter, mDiaryRv);
                 mAddDiaryDialog.show();
+                mHintTv.setVisibility(View.GONE);
             }
         });
 
@@ -56,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         List<Diary> diaryLists = DataSupport.order("id desc").find(Diary.class);
+
+        if(diaryLists.size() == 0){
+            mHintTv.setVisibility(View.VISIBLE);
+        }
+
         mAdapter = new DiaryAdapter(diaryLists);
         mAdapter.setBackLayout(mMainRt);
     }
