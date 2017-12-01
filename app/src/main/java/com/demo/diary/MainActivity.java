@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         writeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAddDiaryDialog = new AddDiaryDialog(MainActivity.this, mAdapter);
+                mAddDiaryDialog = new AddDiaryDialog(MainActivity.this, mAdapter, mDiaryRv);
                 mAddDiaryDialog.show();
             }
         });

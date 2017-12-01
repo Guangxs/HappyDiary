@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,13 +32,15 @@ import java.util.Locale;
 public class AddDiaryDialog extends Dialog {
     private Context mContext;
     private DiaryAdapter mAdapter;
+    private RecyclerView mRecyclerView;
     private ImageView mDiaryPicIv;
     private String mDiaryPicPath;
 
-    public AddDiaryDialog(@NonNull Context context, DiaryAdapter adapter) {
+    public AddDiaryDialog(@NonNull Context context, DiaryAdapter adapter, RecyclerView recyclerView) {
         super(context);
         mContext = context;
         mAdapter = adapter;
+        mRecyclerView = recyclerView;
         // 点击空白处dialog不会消失
         this.setCancelable(false);
     }
@@ -76,6 +79,7 @@ public class AddDiaryDialog extends Dialog {
                 Diary diary = new Diary(mDiaryPicPath, date, contentEt.getText().toString());
                 if (diary.save()) {
                     mAdapter.addItem(diary);
+                    mRecyclerView.scrollToPosition(0);
                     T.showShort(mContext, "保存成功！");
                     AddDiaryDialog.this.dismiss();
                 } else {
