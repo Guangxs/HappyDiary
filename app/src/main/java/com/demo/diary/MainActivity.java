@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mAddDiaryDialog = new AddDiaryDialog(MainActivity.this, mAdapter, mDiaryRv);
                 mAddDiaryDialog.show();
+                mEditDiaryDialog = null;
                 mHintTv.setVisibility(View.GONE);
             }
         });
@@ -86,15 +87,14 @@ public class MainActivity extends AppCompatActivity {
         if (diaryPicPath != null) {
             if (mAddDiaryDialog != null) {
                 mAddDiaryDialog.setDiaryPic(diaryPicPath);
-                mAddDiaryDialog = null;
             } else if (mEditDiaryDialog != null) {
                 mEditDiaryDialog.setDiaryPic(diaryPicPath);
-                mAddDiaryDialog = null;
             }
         }
     }
 
     public void setEditDiaryDialog(EditDiaryDialog editDiaryDialog) {
         mEditDiaryDialog = editDiaryDialog;
+        mAddDiaryDialog = null;
     }
 }

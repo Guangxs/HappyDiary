@@ -35,7 +35,7 @@ public class EditDiaryDialog extends Dialog {
     private String mDiaryPicPath;
 
     public EditDiaryDialog(@NonNull MainActivity context, DiaryAdapter adapter, Diary diary, int position) {
-        super(context);
+        super(context, R.style.Dialog_No_Title);
         mContext = context;
         mAdapter = adapter;
         mPotion = position;

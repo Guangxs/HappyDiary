@@ -29,7 +29,7 @@ public class OptionDiaryDialog extends Dialog {
 
 
     public OptionDiaryDialog(@NonNull Context context, DiaryAdapter adapter, Diary diary, int potion) {
-        super(context);
+        super(context, R.style.Dialog_No_Title);
         mContext = context;
         mAdapter = adapter;
         mDiary = diary;
@@ -62,7 +62,7 @@ public class OptionDiaryDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 OptionDiaryDialog.this.dismiss();
-                new EditDiaryDialog((MainActivity) mContext, mAdapter,mDiary, mPosition).show();
+                new EditDiaryDialog((MainActivity) mContext, mAdapter, mDiary, mPosition).show();
             }
         });
     }

@@ -65,10 +65,10 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryItemVie
     }
 
     @Override
-    public void onBindViewHolder(DiaryItemViewholder holder, final int position) {
+    public void onBindViewHolder(final DiaryItemViewholder holder, final int position) {
         // 获取日记照片
         String picPath = mDiarylists.get(position).getPicPath();
-        if (picPath != null) {
+        if (picPath != null && picPath.length() != 0) {
             holder.diaryPicIv.setImageURI(Uri.parse(picPath));
         }
         // 获取日记日期
@@ -86,7 +86,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryItemVie
         holder.diaryCard.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                new OptionDiaryDialog(v.getContext(), DiaryAdapter.this, mDiarylists.get(position), position).show();
+                new OptionDiaryDialog(v.getContext(), DiaryAdapter.this, mDiarylists.get(holder.getLayoutPosition()), holder.getLayoutPosition()).show();
                 return true;
             }
         });
@@ -94,7 +94,8 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryItemVie
 
 //        changeLayoutColor();
 
-        L.d("onBindViewHolder --->" + position );
+        L.d("onBindViewHolder ---> ItemPosition:" + position);
+        L.d("onBindViewHolder ---> holder.getLayoutPosition():" + holder.getLayoutPosition());
     }
 
     @Override
@@ -117,6 +118,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryItemVie
     public void removeItem(int position) {
         mDiarylists.remove(position);
         notifyItemRemoved(position);
+        L.d("Remove a diary", "---> " + position);
     }
 
     public void setBackLayout(RelativeLayout layout) {

@@ -37,7 +37,7 @@ public class AddDiaryDialog extends Dialog {
     private String mDiaryPicPath;
 
     public AddDiaryDialog(@NonNull Context context, DiaryAdapter adapter, RecyclerView recyclerView) {
-        super(context);
+        super(context, R.style.Dialog_No_Title);
         mContext = context;
         mAdapter = adapter;
         mRecyclerView = recyclerView;
@@ -51,6 +51,7 @@ public class AddDiaryDialog extends Dialog {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.dialog_add_diary, null);
+
         setContentView(view);
 
         mDiaryPicIv = view.findViewById(R.id.iv_diary_pic);
@@ -83,7 +84,7 @@ public class AddDiaryDialog extends Dialog {
                     T.showShort(mContext, "保存成功！");
                     AddDiaryDialog.this.dismiss();
                 } else {
-                    T.showShort(mContext, "pic_oops！保存失败了");
+                    T.showShort(mContext, "Oops！保存失败了");
                 }
                 L.d("Add new diary", "---> " + diary);
             }
