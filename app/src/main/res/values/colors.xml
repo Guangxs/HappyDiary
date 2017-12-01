@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FC6E5E</color>
+    <color name="colorPrimaryDark">#ff8679</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="fabColor">#FC6E5E</color>
+    <color name="diary_content_color">#3E3E3E</color>
+    <color name="diary_date_color">#616161</color>
+    <color name="background">#00ff00</color>
+</resources>
