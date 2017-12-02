@@ -6,13 +6,13 @@
               android:layout_height="match_parent"
               android:layout_marginBottom="10dp"
               android:orientation="vertical"
-              android:padding="10dp">
+              android:padding="5dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cd_diary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="vertical"
@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/iv_diary_pic"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/pic_oops"/>
 
