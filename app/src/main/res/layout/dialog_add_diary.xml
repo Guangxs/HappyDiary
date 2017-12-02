@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/pic_add"/>
+                android:src="@mipmap/pic_add"/>
 
             <View
                 android:layout_width="match_parent"

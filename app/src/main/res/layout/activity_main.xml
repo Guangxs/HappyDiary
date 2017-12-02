@@ -32,7 +32,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="8dp"
         android:clickable="true"
-        android:src="@drawable/write"
+        android:src="@mipmap/write"
         app:backgroundTint="@color/fabColor"
         app:elevation="10dp"
         app:fabSize="normal"/>

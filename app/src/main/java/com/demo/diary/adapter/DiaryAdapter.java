@@ -70,6 +70,8 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryItemVie
         String picPath = mDiarylists.get(position).getPicPath();
         if (picPath != null && picPath.length() != 0) {
             holder.diaryPicIv.setImageURI(Uri.parse(picPath));
+        } else {
+            holder.diaryPicIv.setImageResource(R.mipmap.pic_oops);
         }
         // 获取日记日期
         holder.diaryDateText.setText(mDiarylists.get(position).getDate());
