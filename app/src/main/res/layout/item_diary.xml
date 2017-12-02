@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/iv_diary_pic"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="220dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/pic_oops"/>
 

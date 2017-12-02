@@ -25,8 +25,10 @@ public class PictureSelectorUtils {
                 .selectionMode(PictureConfig.SINGLE) // 单选 PictureConfig.SINGLE
                 .enableCrop(true) // 是否裁剪 true or false
                 .withAspectRatio(3, 2) // int 裁剪比例 如16:9 3:2 3:4 1:1 可自定义
+                .compress(true) // 是否压缩 true or false
                 .hideBottomControls(false) // 是否隐藏uCrop工具栏
                 .showCropGrid(false)// 是否显示裁剪矩形网格
+                .cropCompressQuality(50)// 裁剪压缩质量 默认90 int
                 .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code;
     }
 
@@ -43,10 +45,15 @@ public class PictureSelectorUtils {
                     // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true
                     // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
                     LocalMedia media = mediaList.get(0);
-                    if (media.isCut()) {
+                    if(media.isCompressed()){
+                        imgPath = media.getCompressPath();
+                        L.d("imgSelectCallBack","---> media.isCompressed()");
+                    } else if (media.isCut()) {
                         imgPath = media.getCutPath();
+                        L.d("imgSelectCallBack","---> media.isCut()");
                     } else {
                         imgPath = media.getPath();
+                        L.d("imgSelectCallBack","---> media");
                     }
             }
         }
