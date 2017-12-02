@@ -59,9 +59,9 @@ public class EditDiaryDialog extends Dialog {
         Button cancelBtn = view.findViewById(R.id.btn_cancel);
         Button saveBtn = view.findViewById(R.id.btn_save);
 
-        String imgPath = mDiary.getPicPath();
-        if (imgPath != null && imgPath.length() != 0) {
-            mDiaryPicIv.setImageURI(Uri.parse(imgPath));
+        mDiaryPicPath = mDiary.getPicPath();
+        if (mDiaryPicPath != null && mDiaryPicPath.length() != 0) {
+            mDiaryPicIv.setImageURI(Uri.parse(mDiaryPicPath));
         }
 
         contentEt.setText(mDiary.getContent());
